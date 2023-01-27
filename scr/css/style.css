@@ -1,0 +1,334 @@
+/* styles.css */
+
+/* Add styles here to customize the appearance of your app */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-transform: lowercase;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: aliceblue;
+    scroll-behavior: smooth;
+    user-select: none;
+}
+
+.Cruds {
+    width: 95%;
+    margin: auto;
+}
+
+.head {
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.logo {
+    width: 250px;
+}
+
+
+/* .input-1 {
+    border-top:1px solid rgb(205, 203, 203);
+} */
+
+.input-1,
+.input-2,
+.input-3,
+.input-4,
+.sherch {
+    border-bottom: 1px solid rgb(205, 203, 203);
+}
+
+.input-2 .input-group {
+    width:20%;
+}
+
+table tr .add,
+.pho {
+    width: 15%;
+    word-wrap: break-word;
+}
+
+table tr .idid {
+    width: 1px;
+}
+
+
+#total {
+    color:whitesmoke;
+    padding: 10px;
+    margin-top: 17px;
+    border-radius: 15px;
+    width: 100px;
+}
+
+#total::before {
+    content: "total : ";
+}
+
+
+.btn-up {
+    width: 7%;
+}
+
+button:hover {
+    color: #000;
+    letter-spacing: .5px;
+}
+
+
+/* #deleteAll button {
+    color: rgb(199, 109, 24);
+    padding: 8px;
+    border-radius: 20px;
+    border: 1px solid rgb(199, 109, 24);
+    background-color: transparent;
+    
+}
+
+#deleteAll button:hover {
+    background-color: rgb(199, 109, 24);
+    color: white;
+} */
+
+.trtr {
+    background-color: #008eaa;
+    margin: 0;
+}
+
+
+#update,
+#delete {
+    border: none;
+    background-color: transparent;
+}
+
+
+#update{
+    color: rgb(0, 110, 255);
+}
+
+
+#delete {
+    color: #cf1111;
+}
+
+
+/* @media (max-width: 767px) {
+    .Cruds {
+        width: 90%;
+        height: 40px;
+    }
+    input {
+        font-size: 10px;
+    }
+
+    .search-btn button {
+        font-size: 8px;
+        height: 35px;
+    }
+    #total::before {
+        content: "total : ";
+        font-size: smaller;
+    }
+    #submit {
+        height: 35px;
+        font-size: 10px;
+    }
+    #deleteAll button {
+        height: 35px;
+        font-size: 10px;
+    }
+} */
+
+/* /////////////////////////////////////////////// */
+
+.div-menu {
+   display: flex;
+   justify-content: flex-end;
+   margin: 20px 40px;
+   background-color: transparent;
+} 
+
+
+
+tbody td:hover {
+    color: rgb(217, 22, 22);
+}
+
+/* ///////////////////////////////////////// */
+
+/* man-delivery */
+.btn-man {
+    background-color: transparent;
+    border: none;
+    width: 30px;
+    height: 30px;
+}
+
+.btn-man:hover,
+#dark-mood:hover,
+.btn-order:hover{
+    background-color: #4ec7ff;
+    border-radius: 50%;
+}
+
+/* ///////////////////////////////////////////// */
+
+/* btn-order */
+.btn-order {
+    background-color: transparent;
+    border: none;
+    width: 30px;
+    height: 30px;
+}
+
+
+
+
+
+/* ////////////////////////////// login page ///////////////// */
+
+/* #div-menu,
+#Cruds {
+    display: none;
+}
+
+
+.page-login {
+    width: 100%;
+    height: 100vh;
+    background-color: #e0976070;
+    display: flex;
+    transition: 0.3s;
+}
+
+.wrapper{
+    margin: auto;
+    width: 350px;
+    padding: 40px 30px 50px 30px;
+    background: #fff;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.36);
+    transition: 0.3s;
+  }
+  .wrapper header{
+    font-size: 35px;
+    font-weight: 600;
+  }
+  .wrapper form{
+    margin: 40px 0;
+  }
+  form .field{
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  form .field.shake{
+    animation: shake 0.3s ease-in-out;
+  }
+  @keyframes shake {
+    0%, 100%{
+      margin-left: 0px;
+    }
+    20%, 80%{
+      margin-left: -12px;
+    }
+    40%, 60%{
+      margin-left: 12px;
+    }
+  }
+  form .field .input-area{
+    height: 50px;
+    width: 100%;
+    position: relative;
+  }
+  form input{
+    width: 100%;
+    height: 100%;
+    outline: none;
+    padding: 0 45px;
+    font-size: 18px;
+    background: none;
+    caret-color: #5372F0;
+    border-radius: 5px;
+    border: 1px solid #bfbfbf;
+    border-bottom-width: 2px;
+    transition: all 0.2s ease;
+  }
+  form .field input:focus,
+  form .field.valid input{
+    border-color: #5372F0;
+  }
+  form .field.shake input,
+  form .field.error input{
+    border-color: #dc3545;
+  }
+  .field .input-area i{
+    position: absolute;
+    top: 50%;
+    font-size: 18px;
+    pointer-events: none;
+    transform: translateY(-50%);
+  }
+  .input-area .icon{
+    left: 15px;
+    color: #bfbfbf;
+    transition: color 0.2s ease;
+  }
+  .input-area .error-icon{
+    right: 15px;
+    color: #dc3545;
+  }
+  form input:focus ~ .icon,
+  form .field.valid .icon{
+    color: #5372F0;
+  }
+  form .field.shake input:focus ~ .icon,
+  form .field.error input:focus ~ .icon{
+    color: #bfbfbf;
+  }
+  form input::placeholder{
+    color: #bfbfbf;
+    font-size: 17px;
+  }
+  form .field .error-txt{
+    color: #dc3545;
+    text-align: left;
+    margin-top: 5px;
+  }
+  form .field .error{
+    display: none;
+  }
+  form .field.shake .error,
+  form .field.error .error{
+    display: block;
+  }
+  form .pass-txt{
+    text-align: left;
+    margin-top: -10px;
+  }
+  .wrapper a{
+    color: #5372F0;
+    text-decoration: none;
+  }
+  .wrapper a:hover{
+    text-decoration: underline;
+  }
+  form input[type="submit"]{
+    height: 50px;
+    margin-top: 30px;
+    color: #fff;
+    padding: 0;
+    border: none;
+    background: #5372F0;
+    cursor: pointer;
+    border-bottom: 2px solid rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+  }
+  form input[type="submit"]:hover{
+    background: #2c52ed;
+  } */

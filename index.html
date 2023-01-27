@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valupes</title>
+    <!-- ============================== Data-table ==================== -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="./scr/css/datatables.css">
+    <link rel="stylesheet" href="./scr/css/datatables.min.css">
+    <!-- ============================== Fontasome ==================== -->
+    <link rel="stylesheet" href="./scr/css/all.css">
+    <link rel="stylesheet" href="./scr/css/all.min.css">
+    <!-- ============================== style-css ==================== -->
+    <link rel="stylesheet" href="./scr/css/style.css">
+    <!-- ============================== Bootstrap ==================== -->
+    <link rel="stylesheet" href="./scr/css/bootstrap.min.css">
+    
+    
+
+</head>
+<body>
+
+
+<!-- ////////////////////////////////// Login page /////////////////////////// -->
+
+
+<!-- <div class="page-login" id="page-login">
+  <div class="wrapper">
+  <header>Login Form</header>
+  <form action="#">
+    <div class="field email">
+      <div class="input-area">
+        <input type="text" placeholder="username" id="username">
+      </div>
+      <div class="error error-txt">Email can't be blank</div>
+    </div>
+    <div class="field password">
+      <div class="input-area">
+        <input type="password" placeholder="Password" id="password">
+      </div>
+      <div class="error error-txt">Password can't be blank</div>
+    </div>
+    <div class="pass-txt"><a href="#">Forgot password?</a></div>
+    <input type="submit" value="Login" onclick="login()">
+  </form>
+  <div class="sign-txt">Not yet member? <a href="#">Signup now</a></div>
+  </div>
+</div> -->
+
+
+
+<!-- ////////////////////////////////// menu-btn /////////////////////////// -->
+  <div class="div-menu mt-4 mb-0 text-end" id="div-menu">
+    <!-- man-delivery -->
+    <button class="btn-man me-4" data-bs-toggle="modal" data-bs-target="#myModal"><i class="fa-solid fa-motorcycle
+      "></i><a href="#" target="_blank" rel="noopener noreferrer">
+    </a></i></button>
+
+    <!-- order -->
+    <button class="btn-man me-4" data-bs-toggle="modal" data-bs-target="#myModal-order-cansel"><i class="fa-solid fa-ban"></i>
+      <a href="#" target="_blank" rel="noopener noreferrer">
+    </a></i></button>
+    <!-- order -->
+
+    <button class="btn-man me-4" data-bs-toggle="modal" data-bs-target="#myModal-order"><i class="fa-solid fa-box-open
+      "></i><a href="#" target="_blank" rel="noopener noreferrer">
+    </a></i></button>
+
+    <!-- oeders-ok -->
+    <button class="btn-man me-4" data-bs-toggle="modal" data-bs-target="#myModal-order-ok"><i class="fa-solid fa-box"></i>
+      <a href="#" target="_blank" rel="noopener noreferrer">
+    </a></i></button>
+
+    <!-- oeders-ok -->
+    <button class="btn-man " data-bs-toggle="modal" data-bs-target="#myModal-order-done"><i class="fa-solid fa-circle-check"></i>
+      <a href="#" target="_blank" rel="noopener noreferrer">
+    </a></i></button>
+
+  </div>
+
+  <!-- Cruds -->
+  <div class="Cruds" id="Cruds">
+    <div class="head mb-2">
+      <img class="logo img-fluid " src="./scr/img/logo-valupes.png" alt="">
+    </div>
+
+    <!-- المكتب -->
+    <div class="input-1 text-center pt-3 mb-3">
+        <div class="input-group mb-3 w-25 d-inline-flex me-1">
+            <span class="text-center m-auto pe-1 fw-bold badge bg-secondary"> المكتب  </span>
+            <select type="text" class="form-control " placeholder="المكتب" id="lib"> 
+              
+            </select>
+          </div>
+          <i class="fa-solid fa-arrow-left text-secondary"></i>
+        <div class="input-group mb-3 w-25 d-inline-flex">
+            <input type="text" class="form-control ind" placeholder="//////// المكاتب المتاحة ////////" id="lib-search">
+            <button class="btn btn-outline-primary" type="button" onclick="return ValidationCategory()">
+              <i class="fa-solid fa-download"></i></button> 
+            <butt class="btn btn-outline-danger" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+              <i class="fa-solid fa-pen"></i></butt> 
+          </div>
+    </div>
+
+    <!-- العميل -->
+    <div class="input-2 text-center  mb-3">
+        <div class="input-group mb-3  d-inline-flex me-3">
+          <span class="text-center m-auto pe-1 fw-bold badge bg-secondary"> العميل  </span>
+            <input type="text" class="form-control" placeholder="اسم العميل" id="clent">
+          </div>
+
+        <div class="input-group mb-3  d-inline-flex me-3">
+          <span class="text-center m-auto pe-1 fw-bold badge bg-secondary"> التلفون  </span>
+            <input type="number" class="form-control" placeholder="رقم التلفون" id="clent-phone">
+          </div>
+
+        <div class="input-group mb-3  d-inline-flex me-3">
+          <span class="text-center m-auto pe-1 fw-bold badge bg-secondary"> العنوان  </span>
+            <input type="text" class="form-control" placeholder="العنوان" id="addres">
+          </div>
+        <div class="input-group mb-3  d-inline-flex me-3">
+          <span class="text-center m-auto pe-1 fw-bold badge bg-secondary"> المحافظة  </span>
+            <input type="text" class="form-control" placeholder="المحافظة" id="from">
+          </div>
+    </div>
+
+    <!-- السعر -->
+    <div class="input-2 text-center  mb-3">
+        <div class="input-group mb-3  d-inline-flex me-3">
+          <span class="text-center m-auto pe-1 fw-bold badge bg-secondary"> السعر   </span>
+            <input type="number" class="form-control" onkeyup="getTotal()" placeholder="السعر" id="price">
+          </div>
+
+        <div class="input-group mb-3  d-inline-flex me-3">
+          <span class="text-center m-auto pe-1 fw-bold badge bg-secondary"> قيمة الشحن  </span>
+            <input type="number" class="form-control" onkeyup="getTotal()" placeholder="الشحن" id="delivery">
+          </div>
+
+          <div class="input-group mb-3  d-inline-flex me-3">
+            <span class="text-center m-auto pe-1 fw-bold badge bg-secondary">السعر المستلم</span>
+              <input type="number" class="form-control"  placeholder="السعر المستلم" id="price-done">
+            </div>
+
+          <small class="btn-danger" id="total"></small>
+    </div>
+    
+    <!-- الحالة -->
+    <div class="input-2 text-center  mb-3">
+        <div class="input-group mb-3  d-inline-flex me-1">
+          <span class="text-center m-auto pe-1 fw-bold badge bg-secondary"> حالة الاوردر   </span>
+            <select type="text" class="form-control" placeholder="حالة الاوردر" id="order">
+
+            </select>
+          </div>
+          <i class="fa-solid fa-arrow-left text-secondary"></i>
+        <div class="input-group mb-3  d-inline-flex me-3">
+            <input type="text" class="form-control ind" placeholder="////// نوع الحالة //////" id="order-kind">
+            <button class="btn btn btn-outline-primary" type="button" onclick="return ValidationOrder()">
+              <i class="fa-solid fa-download"></i></i></button> 
+
+            <button class="btn btn btn-outline-danger" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
+              <i class="fa-solid fa-pen"></i></button>
+          </div>
+
+        <div class="input-group mb-3  d-inline-flex me-3">
+          <span class="text-center m-auto pe-1 fw-bold badge bg-secondary">ملاحظات</span>
+            <input type="text" class="form-control" placeholder="ملاحظات" id="title">
+          </div>
+          
+          <div class="input-group mb-3  d-inline-flex me-3">
+            <span class="text-center m-auto pe-1 fw-bold badge bg-secondary"> التاريخ </span>
+            <input type="date" class="form-control" placeholder="التاريخ" id="a.m">
+          </div>
+    </div>
+    
+    <!-- المندوب -->
+    <div class="input-2 text-center  mb-3">
+        <div class="input-group mb-3 w-25 d-inline-flex">
+          <span class="text-center m-auto pe-1 fw-bold badge bg-secondary"> المندوب </span>
+            <select type="text" class="form-control" placeholder="المندوب" id="fly"> 
+
+            </select>
+          </div>
+          <i class="fa-solid fa-arrow-left text-secondary"></i>
+          <div class="input-group mb-3  d-inline-flex me-1">
+            <input type="text" class="form-control " placeholder="////// المناديب //////" id="fly-option">
+            <button class="btn btn btn-outline-primary" type="button" onclick="return Validationflyoption()">
+              <i class="fa-solid fa-download"></i></button> 
+            <button class="btn btn btn-outline-danger" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal-1">
+              <i class="fa-solid fa-pen"></i></button>
+          </div>
+    </div>
+
+    <!-- Create btn -->
+    <div class="button-create text-center mb-5">
+    <button  class="btn btn-outline-primary w-25" id="submit">إنشاء</button>
+    </div>
+
+    <!-- Search -->
+    <!-- <div class="sherch text-center pb-4 m-4">
+        <div class="input-group mb-3  d-inline-flex me-3 w-75 ">
+            <input type="text" class="form-control" placeholder="بحث">
+          </div>
+          <div class="btn-search text-center">
+            <button class="btn btn btn-outline-primary me-3" type="button">بواسطة العميل</button> 
+            <button class="btn btn btn-outline-danger me-3" type="button">بواسطة السعر</button>
+            <button class="btn btn btn-outline-success" type="button">بواسطة المندوب</button>
+          </div>
+    </div> -->
+
+    <div class="text-center" id="deleteAll"></div>
+    
+    <div class="label-table mb-2">
+      <table class="table  table-hover table-responsive mt-5"  id="tablPro">
+        <thead>
+          <tr class="sticky-top trtr">
+            <th class="p-3 text-white text-center">ID</th>
+            <th class="p-3 text-white text-center">المكتب</th>
+            <th class="p-3 text-white text-center">العميل</th>
+            <th class="p-3 text-white text-center">التلفون</th>
+            <th class="p-3 text-white text-center">العنوان</th>
+            <th class="p-3 text-white text-center">المحافظة</th>
+            <th class="p-3 text-white text-center">السعر</th>
+            <th class="p-3 text-white text-center">المستلم</th>
+            <!-- <th class="p-3 text-white text-center">الشحن</th> -->
+            <th class="p-3 text-white text-center">الحالة</th>
+            <th class="p-3 text-white text-center">ملاحظات</th>
+            <th class="p-3 text-white text-center">التاريخ</th>
+            <th class="p-3 text-white text-center">المندوب</th>
+            <th class="pt-3 pb-3 du text-white text-center">تعديل</th>
+          </tr>
+        </thead>
+        <tbody  id="tbody">
+
+        </tbody>
+      </table>
+    </div>
+
+</div>
+
+
+
+<!-- ============================================== Model ============================================ -->
+<!-- ============================================== Model ============================================ -->
+<!-- ============================================== Model ============================================ -->
+<!-- ============================================== Model ============================================ -->
+
+
+<!-- Modal lib -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" 
+  data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">  المكاتب المتاحة <span id="countCategory"></span></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="container-fluid">
+        <table class="table  w-100 text-center m-0">
+          <thead>
+            <tr class="bg-light w-100">
+              <th class="text-center">ID</th>
+              <th class="text-center">المكتب</th>
+              <th class="text-center">حذف</th>
+            </tr>
+          </thead>
+          <tbody class="border-0"  id="category">
+  
+          </tbody>
+        </table>
+     </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal order -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"> الحالة <span id="countOrder"></span></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        
+        <div class="container-fluid">
+          <table class="table  w-100 text-center m-0">
+            <thead>
+              <tr class="bg-light w-100">
+                <th class="text-center">ID</th>
+                <th class="text-center">نوع الحالة</th>
+                <th class="text-center">حذف</th>
+              </tr>
+            </thead>
+            <tbody class="border-0"  id="oorder">
+    
+            </tbody>
+          </table>
+       </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Modle fly -->
+<div class="modal fade" id="exampleModal-1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">المناديب <span id="countFly"></span></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+      
+        <div class="container-fluid">
+          <table class="table  w-100 text-center m-0">
+            <thead>
+              <tr class="bg-light w-100">
+                <th class="text-center">ID</th>
+                <th class="text-center">المندوب</th>
+                <th class="text-center">حذف</th>
+              </tr>
+            </thead>
+            <tbody class="border-0"  id="fflyoption">
+    
+            </tbody>
+          </table>
+       </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- /////////////////////////////////////////////////////////////////////////// -->
+
+<!-- Modle delivery-btn -->
+<div class="modal fade bg-white"  id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-fullscreen container text-center">
+    <div class="modal-content  ">
+      <div class="modal-header mb-0">
+        <h5 class="modal-title w-100 text-center" id="exampleModalLabel">صفحة المناديب</h5>
+        <button class="me-5 border-0 bg-transparent " onclick="windowPrint()">
+          <i class="fa-solid fa-print"></i></button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body bt-0" id="bodyDelivery">
+      
+        <div class="label-table mb-4">
+          <table class="table tableDelivery table-hover table-responsive "  id="tablProoo">
+            <thead>
+              <tr class="sticky-top trtr">
+
+                <th class="p-3 text-white text-center">المندوب</th>
+                <th class="p-3 text-white text-center">العميل</th>
+                <th class="p-3 text-white text-center">التلفون</th>
+                <th class="p-3 text-white text-center">العنوان</th>
+                <th class="p-3 text-white text-center">المحافظة</th>
+                <th class="p-3 text-white text-center">التاريخ</th>
+                <th class="p-3 text-white text-center">الحالة</th>
+                <th class="p-3 text-white text-center">ملاحظات</th>
+                <th class="p-3 text-white text-center">السعر</th>
+                <th class="p-3 text-white text-center">المستلم</th>
+                <!-- <th class="p-3 text-white text-center">الشحن</th> -->
+
+              </tr>
+            </thead>
+            <tbody  id="tbodyDelivery">
+    
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modle order-btn -->
+<div class="modal fade bg-white"  id="myModal-order" tabindex="-1" 
+    aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-fullscreen container text-center">
+    <div class="modal-content  ">
+      <div class="modal-header">
+        <h5 class="modal-title w-100 text-center" id="exampleModalLabel">صفحة المرتجعات</h5>
+        <button class="me-5 border-0 bg-transparent " onclick="windowPrint()"><i class="fa-solid fa-print"></i></button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body bt-0">
+      
+        <div class="label-table mb-4">
+          <table class="table tableDelivery table-hover table-responsive "  id="tablOrder">
+            <thead>
+              <tr class="sticky-top trtr mt-0">
+
+                <th class="p-3 text-white text-center">المكتب</th>
+                <th class="p-3 text-white text-center">الحالة</th>
+                <th class="p-3 text-white text-center">ملاحظات</th>
+                <th class="p-3 text-white text-center">العميل</th>
+                <th class="p-3 text-white text-center">التلفون</th>
+                <th class="p-3 text-white text-center">العنوان</th>
+                <th class="p-3 text-white text-center">المحافظة</th>
+                <th class="p-3 text-white text-center">التاريخ</th>
+                <th class="p-3 text-white text-center">السعر</th>
+                <th class="p-3 text-white text-center">المستلم</th>
+                <th class="p-3 text-white text-center">المندوب</th>
+                <!-- <th class="p-3 text-white text-center">الشحن</th> -->
+
+              </tr>
+            </thead>
+            <tbody   id="tbodyOrder">
+    
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modle order-btn-done -->
+<div class="modal fade bg-white"  id="myModal-order-done" tabindex="-1" 
+    aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-fullscreen container text-center">
+    <div class="modal-content  ">
+      <div class="modal-header">
+        <h5 class="modal-title w-100 text-center" id="exampleModalLabel">صفحة الاوردرات التامة</h5>
+        <button class="me-5 border-0 bg-transparent " onclick="windowPrint()">
+          <i class="fa-solid fa-print"></i></button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body bt-0">
+      
+        <div class="label-table mb-4">
+          <table class="table tableDelivery table-hover table-responsive "  id="tablOrder-done">
+            <thead>
+              <tr class="sticky-top trtr mt-0">
+
+                <th class="p-3 text-white text-center">المكتب</th>
+                <th class="p-3 text-white text-center">الحالة</th>
+                <th class="p-3 text-white text-center">ملاحظات</th>
+                <th class="p-3 text-white text-center">العميل</th>
+                <th class="p-3 text-white text-center">التلفون</th>
+                <th class="p-3 text-white text-center">العنوان</th>
+                <th class="p-3 text-white text-center">المحافظة</th>
+                <th class="p-3 text-white text-center">التاريخ</th>
+                <th class="p-3 text-white text-center">السعر</th>
+                <th class="p-3 text-white text-center">المستلم</th>
+                <th class="p-3 text-white text-center">المندوب</th>
+                <!-- <th class="p-3 text-white text-center">الشحن</th> -->
+
+              </tr>
+            </thead>
+            <tbody   id="tbodyOrder-done">
+    
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modle order-ok -->
+<div class="modal fade bg-white"  id="myModal-order-ok" tabindex="-1" 
+    aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-fullscreen container text-center">
+    <div class="modal-content  ">
+      <div class="modal-header">
+        <h5 class="modal-title w-100 text-center" id="exampleModalLabel">صفحة الاوردرات قيدة التشغيل</h5>
+        <button class="me-5 border-0 bg-transparent " onclick="windowPrint()"><i class="fa-solid fa-print"></i></button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body bt-0">
+      
+        <div class="label-table mb-4">
+          <table class="table tableDelivery table-hover table-responsive "  id="tablOrder-ok">
+            <thead>
+              <tr class="sticky-top trtr m-4">
+
+                <th class="p-3 text-white text-center">المكتب</th>
+                <th class="p-3 text-white text-center">الحالة</th>
+                <th class="p-3 text-white text-center">ملاحظات</th>
+                <th class="p-3 text-white text-center">العميل</th>
+                <th class="p-3 text-white text-center">التلفون</th>
+                <th class="p-3 text-white text-center">العنوان</th>
+                <th class="p-3 text-white text-center">المحافظة</th>
+                <th class="p-3 text-white text-center">التاريخ</th>
+                <th class="p-3 text-white text-center">السعر</th>
+                <th class="p-3 text-white text-center">المستلم</th>
+                <th class="p-3 text-white text-center">المندوب</th>
+                <!-- <th class="p-3 text-white text-center">الشحن</th> -->
+
+              </tr>
+            </thead>
+            <tbody   id="tbodyOrder-ok">
+    
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modle order-cansel -->
+<div class="modal fade bg-white"  id="myModal-order-cansel" tabindex="-1" 
+    aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-fullscreen container text-center">
+    <div class="modal-content  ">
+      <div class="modal-header mb-0">
+        <h5 class="modal-title w-100 text-center" id="exampleModalLabel">صفحة الاوردرات الملغية</h5>
+        <button class="me-5 border-0 bg-transparent " onclick="windowPrint()"><i class="fa-solid fa-print"></i></button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body bt-0">
+      
+        <div class="label-table mb-4">
+          <table class="table tableDelivery table-hover table-responsive "  id="tablOrder-cansel">
+            <thead>
+              <tr class="sticky-top trtr m-4">
+
+                <th class="p-3 text-white text-center">المكتب</th>
+                <th class="p-3 text-white text-center">الحالة</th>
+                <th class="p-3 text-white text-center">ملاحظات</th>
+                <th class="p-3 text-white text-center">العميل</th>
+                <th class="p-3 text-white text-center">التلفون</th>
+                <th class="p-3 text-white text-center">العنوان</th>
+                <th class="p-3 text-white text-center">المحافظة</th>
+                <th class="p-3 text-white text-center">التاريخ</th>
+                <th class="p-3 text-white text-center">السعر</th>
+                <th class="p-3 text-white text-center">المستلم</th>
+                <th class="p-3 text-white text-center">المندوب</th>
+                <!-- <th class="p-3 text-white text-center">الشحن</th> -->
+
+              </tr>
+            </thead>
+            <tbody   id="tbodyOrder-cansel">
+    
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<!-- ============================== Fontasome ==================== -->
+<script src="./scr/js/all.js"></script>
+<script src="./scr/js/all.min.js"></script>
+<!-- ============================== Data-table ==================== -->
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
+<script src="./scr/js/datatables.js"></script>
+<script src="./scr/js/datatables.min.js"></script>
+<!-- ============================== Bootstrap ==================== -->
+<script src="./scr/js/bootstrap.min.js"></script>
+<!-- ============================== Main.js ==================== -->
+<script src="./scr/js/model.js"></script>
+
+
+</body>
+</html>
